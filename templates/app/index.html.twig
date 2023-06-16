@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Location de voitures{% endblock %}
+
+{% block body %}
+
+<h1>Location de voitures</h1>
+
+<div class="voitures-container">
+    {% for voiture in voitures %}
+        <div class="voiture-card">
+            <div class="voiture-image">
+                <img src="{{ voiture.photo }}" alt="{{ voiture.titre }}">
+            </div>
+            <div class="voiture-details">
+                <h2>{{ voiture.titre }}</h2>
+                <p>Marque: {{ voiture.marque }}</p>
+                <p>Modèle: {{ voiture.modele }}</p>
+                <p>Description: {{ voiture.description }}</p>
+                <p>Prix journalier: {{ voiture.prixjournalier }} EUR</p>
+                <p>Date d'enregistrement: {{ voiture.dateenregistrement|date('d/m/Y') }}</p>
+                <div class="text-center my-2">
+                <a href="{{path('voiture_test' , {id: voiture.id})}}" class="btn btn-primary">En savoir plus ..</a>
+                </div>
+            </div> 
+        </div>
+    {% endfor %}
+</div>
+
+<style>
+    .voitures-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .voiture-card {
+        width: calc(33.33% - 20px);
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .voiture-image img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .voiture-details {
+        flex-grow: 1;
+    }
+
+    .voiture-details h2 {
+        font-size: 16px;
+        margin-top: 0;
+    }
+
+    .voiture-details p {
+        margin: 5px 0;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{# templates/voiture/show.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Voiture Test{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+  <div class="text-center container">
+    <h1 class="text-center">{{ voiture.titre }}</h1>
+
+    <div class="car-details">
+      <img src="{{ voiture.photo }}" alt="Voiture" class="car-image">
+      <div class="car-info">
+        <p><strong>Marque:</strong> {{ voiture.marque }}</p>
+        <p><strong>Modèle:</strong> {{ voiture.modele }}</p>
+        <p><strong>Description:</strong> {{ voiture.description }}</p>
+        <p><strong>Prix journalier:</strong> {{ voiture.prixJournalier }} €</p>
+        <a href="" class="btn btn-primary">Réservez ici</a>
+      </div>
+    </div>
+    </div>
+
+{% endblock %}
