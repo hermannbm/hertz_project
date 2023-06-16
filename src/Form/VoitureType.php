@@ -18,7 +18,7 @@ class VoitureType extends AbstractType
             ->add('description')
             ->add('photo')
             ->add('prix_journalier')
-            ->add('date_enregistrement')
+            // ->add('date_enregistrement')
         ;
     }
 

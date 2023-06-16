@@ -1,9 +1,80 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Manage your cars Admin!{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
+	<div class="container">
+		<h1 class="text-center my-4">
+			{% if editMode %}
+				Modification de l'article
+			{% else %}
+				Création d'un article
+			{% endif %}
+		</h1>
 
-<h1 class='text-center'> Gestion de Véhicule</h1>
-{{form(formVoiture)}}
+		{{ form_start(formVoiture, {
+			'attr': {
+				'class': 'my-4'
+			}
+		}) }}
+
+		<table class="table">
+			<tbody>
+				<tr class="bg-primary text-white">
+					<th>Titre</th>
+					<td>{{ form_widget(formVoiture.titre, {
+						'attr': {
+							'class': 'form-control'
+						}
+					}) }}</td>
+				</tr>
+				<tr class="bg-secondary text-white">
+					<th>Marque</th>
+					<td>{{ form_widget(formVoiture.marque, {
+						'attr': {
+							'class': 'form-control'
+						}
+					}) }}</td>
+				</tr>
+				<tr class="bg-info text-white">
+					<th>Modèle</th>
+					<td>{{ form_widget(formVoiture.modele, {
+						'attr': {
+							'class': 'form-control',
+							'placeholder': 'Contenu de l\'article'
+						}
+					}) }}</td>
+				</tr>
+				<tr class="bg-warning text-dark">
+					<th>Description</th>
+					<td>{{ form_widget(formVoiture.description, {
+						'attr': {
+							'class': 'form-control'
+						}
+					}) }}</td>
+				</tr>
+				<tr class="bg-danger text-white">
+					<th>Photo</th>
+					<td>{{ form_widget(formVoiture.photo, {
+						'attr': {
+							'class': 'form-control'
+						}
+					}) }}</td>
+				</tr>
+				<tr class="bg-success text-white">
+					<th>Prix journalier</th>
+					<td>{{ form_widget(formVoiture.prix_journalier, {
+						'attr': {
+							'class': 'form-control'
+						}
+					}) }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="d-flex justify-content-center">
+			<button type="submit" class="btn btn-primary">Enregistrer</button>
+		</div>
+		{{ form_end(formVoiture) }}
+	</div>
 {% endblock %}
